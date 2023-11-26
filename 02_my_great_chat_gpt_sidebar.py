@@ -14,7 +14,7 @@ def init_page():
         page_icon="🤖", layout="wide"
     )
     st.header("My Great ChatGPT 🤖")
-    st.sidbar.title("Options")
+    st.sidebar.title("Options")
 
 def init_messages():
     clear_button = st.sidebar.button("Clear messages", key="clear")
@@ -25,10 +25,10 @@ def init_messages():
         st.session_state.costs = []
 
 def select_model():
-    st.sidebar.radio("Select model", ["GPT-3.5", "GPT-4"])
+    model = st.sidebar.radio("Select model", ["GPT-3.5", "GPT-4"])
     if model == "GPT-3.5":
         model_name = "gpt-3.5-turbo"
-    else
+    else:
         model_name = "gpt-4"
     
     temperature = st.sidebar.slider("Temperature:", min_value=0.0, max_value=2.0, value=0.0, step=0.1)
@@ -69,7 +69,7 @@ def main():
     # コストを表示
     costs = st.session_state.get('costs', [])
     st.sidebar.markdown("## Costs")
-    st.sidebar.markdown(f"**Total const: ${sum(costs):.5f}**")
+    st.sidebar.markdown(f"**Total cost: ${sum(costs):.5f}**")
     for cost in costs:
         st.sidebar.markdown(f"-${cost:.5f}")
 
